@@ -82,7 +82,7 @@ function setCurrentDate(weekDay) {
 }
 
 const hasLessonPlan = computed(() => {
-  return lessonTimetable[0].weeklyLessonPlan[currentWeekDay.value]
+  return lessonTimetable[weekType.value].weeklyLessonPlan[currentWeekDay.value]
 });
 </script>
 

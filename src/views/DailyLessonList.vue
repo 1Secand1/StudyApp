@@ -3,11 +3,11 @@
     <div class="date-info">
       <h2>1 марта</h2>
       <pick-value-from-the-list
-        name="switch"
+        listName="switch"
         type="radio"
         :elements="weekTypelist"
-        selected="monday"
-        @get-element=""
+        :selected="weekType"
+        @get-element="switchWeekType"
       />
     </div>
     <pick-value-from-the-list
@@ -21,7 +21,6 @@
   <ul class="time-section-list">
     <time-section
       v-if="cards.length"
-      class="test"
       :cards="cards"
     />
     <p v-else>
@@ -31,7 +30,7 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 
 import timeSection from '../components/SubjectСard.vue'
 import pickValueFromTheList from '../components/pickValueFromTheList.vue'
@@ -49,6 +48,15 @@ const weekTypelist = [
     textValue:"Знаменатель"
   },
 ]
+const weekType = 'numerator'
+const weekDayFoListSelect = Object.entries(daysOfTheWeek)
+  .map((weekDay) => {
+    return {
+      name: weekDay[0],
+      textValue: weekDay[1].textValue
+    }
+  })
+
 
 function showTheDaysLessons(weekDay) {
   const lessons = lessonTimetable[0].weeklyLessonPlan[weekDay]
@@ -56,13 +64,9 @@ function showTheDaysLessons(weekDay) {
   cards.length = 0
   cards.push(...lessons)
 }
-
-const weekDayFoListSelect = Object.entries(daysOfTheWeek).map((weekDay)=>{
-  return {
-    name: weekDay[0],
-    textValue: weekDay[1].textValue
-  }
-})
+function switchWeekType(weekType) {
+  console.log(weekType);
+}
 
 </script>
 
@@ -101,8 +105,20 @@ background: red;
   margin-top: 20px;
   margin-bottom: 100px;
 }
+</style>
 
-.test {
-  animation: fadeIn 2s ease-in-out;
+<style >
+.switch-selection-list{
+  display: flex;
+  list-style: none;
+  gap: 10px;
+}
+.switch-selection-list__item{
+  padding: 2px 5px;
+  border-radius: 5px;
+}
+.switch-active {
+  color: white;
+  background: #623df6;
 }
 </style>

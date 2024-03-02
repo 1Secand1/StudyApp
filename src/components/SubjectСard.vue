@@ -2,7 +2,7 @@
 <li 
   class="card" 
   v-for="cardInformation in cards" 
-  :key="cardInformation.number"
+  :key="cardInformation.lessonNumber"
 >
 <div class="card-heder">
   <p>Певая пара</p>

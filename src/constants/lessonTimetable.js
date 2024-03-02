@@ -6,7 +6,7 @@ export const lessonTimetable = [
       monday: [],
       tuesday: [
         {
-          number: 1,
+          lessonNumber: 1,
           subjectTitle: 'Тестирование информационных ситстем',
           meetingPlace: 'Правый берег',
           classroom: '335',
@@ -15,7 +15,7 @@ export const lessonTimetable = [
           typeOfLessons: 'Лабораторная'
         },
         {
-          number: 2,
+          lessonNumber: 2,
           subjectTitle: 'Тестирование информационных ситстем',
           meetingPlace: 'Правый берег',
           classroom: '335',
@@ -24,7 +24,7 @@ export const lessonTimetable = [
           typeOfLessons: 'Лабораторная'
         },
         {
-          number: 3,
+          lessonNumber: 3,
           subjectTitle: 'Тестирование информационных ситстем',
           meetingPlace: 'Правый берег',
           classroom: '335',
@@ -33,7 +33,7 @@ export const lessonTimetable = [
           typeOfLessons: 'Лабораторная'
         },
         {
-          number: 4,
+          lessonNumber: 4,
           subjectTitle: 'физическая  культура',
           meetingPlace: 'Левый берег',
           classroom: 'Спорт зал',
@@ -42,7 +42,7 @@ export const lessonTimetable = [
           typeOfLessons: 'Практика'
         },
         {
-          number: 5,
+          lessonNumber: 5,
           subjectTitle: 'физическая  культура',
           meetingPlace: 'Левый берег',
           classroom: 'Спорт зал',
@@ -53,7 +53,7 @@ export const lessonTimetable = [
       ],
       wednesday: [
         {
-          number: 4,
+          lessonNumber: 4,
           subjectTitle: 'МДК.09.01 проектирование и разработка веб-приложений',
           meetingPlace: 'Правый берег',
           classroom: '18',
@@ -62,7 +62,7 @@ export const lessonTimetable = [
           typeOfLessons: 'Лабораторная'
         },
         {
-          number: 5,
+          lessonNumber: 5,
           subjectTitle: 'МДК.09.01 проектирование и разработка веб-приложений',
           meetingPlace: 'Правый берег',
           classroom: '18',
@@ -71,7 +71,7 @@ export const lessonTimetable = [
           typeOfLessons: 'Лабораторная'
         },
         {
-          number: 6,
+          lessonNumber: 6,
           subjectTitle: 'МДК.09.01 проектирование и разработка веб-приложений',
           meetingPlace: 'Правый берег',
           classroom: '18',
@@ -80,7 +80,7 @@ export const lessonTimetable = [
           typeOfLessons: 'Лабораторная'
         },
         {
-          number: 7,
+          lessonNumber: 7,
           subjectTitle: 'МДК.09.01 проектирование и разработка веб-приложений',
           meetingPlace: 'Правый берег',
           classroom: '18',
@@ -91,7 +91,7 @@ export const lessonTimetable = [
       ],
       thursday: [
         {
-          number: 2,
+          lessonNumber: 2,
           subjectTitle: 'МДК.08.01 проектирование и разработка интерфейсов пользователей',
           meetingPlace: 'Правый берег',
           classroom: '20',
@@ -100,7 +100,7 @@ export const lessonTimetable = [
           typeOfLessons: 'Лабораторная'
         },
         {
-          number: 3,
+          lessonNumber: 3,
           subjectTitle: 'МДК.08.01 проектирование и разработка интерфейсов пользователей',
           meetingPlace: 'Правый берег',
           classroom: '20',
@@ -109,7 +109,7 @@ export const lessonTimetable = [
           typeOfLessons: 'Лабораторная'
         },
         {
-          number: 4,
+          lessonNumber: 4,
           subjectTitle: 'МДК.08.01 проектирование и разработка интерфейсов пользователей',
           meetingPlace: 'Правый берег',
           classroom: '20',
@@ -120,7 +120,7 @@ export const lessonTimetable = [
       ],
       friday: [
         {
-          number: 1,
+          lessonNumber: 1,
           subjectTitle: 'Основы  философии',
           meetingPlace: 'Правый берег',
           classroom: '19',
@@ -129,7 +129,7 @@ export const lessonTimetable = [
           typeOfLessons: 'Лекция'
         },
         {
-          number: 2,
+          lessonNumber: 2,
           subjectTitle: 'Основы  философии',
           meetingPlace: 'Правый берег',
           classroom: '19',
@@ -138,7 +138,7 @@ export const lessonTimetable = [
           typeOfLessons: 'Лекция'
         },
         {
-          number: 3,
+          lessonNumber: 3,
           subjectTitle: 'МДК.05.02 Разработка кода информационных систем',
           meetingPlace: 'Правый берег',
           classroom: '19',
@@ -147,7 +147,7 @@ export const lessonTimetable = [
           typeOfLessons: 'Теория'
         },
         {
-          number: 4,
+          lessonNumber: 4,
           subjectTitle: 'Иностранный язык в профессиональной деятельности',
           meetingPlace: 'Правый берег',
           classroom: '4a',
@@ -158,7 +158,7 @@ export const lessonTimetable = [
       ],
       saturday: [
         {
-          number: 1,
+          lessonNumber: 1,
           subjectTitle: 'МДК.08.01 Проектирование и разработка интерфейсов пользователей ',
           meetingPlace: 'Правый берег',
           classroom: '21',
@@ -167,7 +167,7 @@ export const lessonTimetable = [
           typeOfLessons: 'Теория'
         },
         {
-          number: 2,
+          lessonNumber: 2,
           subjectTitle: 'МДК.09.01 проектирование и разработка веб-приложений',
           meetingPlace: 'Правый берег',
           classroom: '21',
@@ -176,7 +176,7 @@ export const lessonTimetable = [
           typeOfLessons: 'Теория'
         },
         {
-          number: 3,
+          lessonNumber: 3,
           subjectTitle: 'МДК.09.01 проектирование и разработка веб-приложений',
           meetingPlace: 'Правый берег',
           classroom: '21',
@@ -184,7 +184,7 @@ export const lessonTimetable = [
           teachersName: 'Паринов Д.Б',
           typeOfLessons: 'Теория'
         },
-      ]
+      ],
     }
   },
   {

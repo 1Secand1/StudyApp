@@ -20,8 +20,12 @@
 
   <ul class="time-section-list">
     <subject-card
+      v-if="hasLessonPlan.length"
       :cards="hasLessonPlan"
     />
+    <p v-else>
+      На сегодня занятий нету
+    </p>
   </ul>
 </template>
 
@@ -33,8 +37,8 @@ import pickValueFromTheList from '../components/pickValueFromTheList.vue'
 import { daysOfTheWeek } from '../constants/weekDay.js'
 import { lessonTimetable } from '../constants/lessonTimetable.js'
 
-const currentWeekDay = ref(Object.keys(daysOfTheWeek)[new Date().getDay()-1])
-const weekType = ref('numerator')
+const currentWeekDay = ref(Object.keys(daysOfTheWeek)[new Date().getDay() - 1])
+const weekType = ref("numerator")
 
 const cards = reactive([])
 const weekTypelist = [
@@ -54,22 +58,13 @@ const weekDayFoListSelect = Object.entries(daysOfTheWeek).map((weekDay) => {
     }
   })
 
-function showTheDaysLessons(weekDay) {
-  const lessons = lessonTimetable[0].weeklyLessonPlan[weekDay]
-
-  cards.length = 0
-  cards.push(...lessons)
-}
-function switchWeekType(weekType) {
-  // console.log(weekType);
-}
 function setCurrentDate(weekDay) {
-  const date = new Date()
-  if (!weekDay) return
+  const weekdayNumber = daysOfTheWeek[weekDay]?.weekdayNumber
+  if (!weekdayNumber) return
 
   const months = ["Январья", "Февралья", "Марта", "Апрелья", "Майя", "Июнья", "Июлья", "Августа", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
-  const weekdayNumber = daysOfTheWeek[weekDay].weekdayNumber
 
+  const date = new Date()
   const currentMonth = date.getMonth()
   const currentDateOfTheMonth = date.getDate()
   const currentYear = date.getFullYear()

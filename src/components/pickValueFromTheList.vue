@@ -17,7 +17,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 
-const emit = defineEmits(['getElement'])
+const emit = defineEmits(['update:modelValue'])
 const props = defineProps({
   type: {
     type: String,
@@ -31,7 +31,7 @@ const props = defineProps({
     default: undefined
   },
   elements: [Array],
-  selected: [Array]
+  selected: [Array,String],
 })
 
 const selectedWeekdays = ref(props.selected)
@@ -71,13 +71,13 @@ function selectDayOfTheWeek({ target }) {
     select(dataset.weekday)
   }
 
-  emit('getElement', selectedWeekdays.value)
+  emit('update:modelValue', selectedWeekdays.value)
 
 }
 
 
 onMounted(() => {
-  emit('getElement', props.selected)
+  emit('update:modelValue', props.selected)
 })
 </script>
 

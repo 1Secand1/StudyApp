@@ -1,41 +1,40 @@
 <template>
   <header class="header">
     <div class="date-info">
-      <h2>1 марта</h2>
+      <h2>{{setCurrentDate(currentWeekDay)}}</h2>
       <pick-value-from-the-list
         listName="switch"
         type="radio"
         :elements="weekTypelist"
         :selected="weekType"
-        @get-element="switchWeekType"
+        v-model="weekType"
       />
     </div>
     <pick-value-from-the-list
       type="radio"
       :elements="weekDayFoListSelect"
-      selected="monday"
-      @get-element="showTheDaysLessons"
+      :selected="currentWeekDay"
+      v-model="currentWeekDay"
     />
   </header>
 
   <ul class="time-section-list">
-    <time-section
-      v-if="cards.length"
-      :cards="cards"
+    <subject-card
+      :cards="hasLessonPlan"
     />
-    <p v-else>
-      Пар нету
-    </p>
   </ul>
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue'
+import { computed, reactive, ref } from 'vue'
 
-import timeSection from '../components/SubjectСard.vue'
+import subjectCard from '../components/SubjectСard.vue'
 import pickValueFromTheList from '../components/pickValueFromTheList.vue'
 import { daysOfTheWeek } from '../constants/weekDay.js'
 import { lessonTimetable } from '../constants/lessonTimetable.js'
+
+const currentWeekDay = ref("tuesday")
+const weekType = ref('numerator')
 
 const cards = reactive([])
 const weekTypelist = [
@@ -48,26 +47,48 @@ const weekTypelist = [
     textValue:"Знаменатель"
   },
 ]
-const weekType = 'numerator'
-const weekDayFoListSelect = Object.entries(daysOfTheWeek)
-  .map((weekDay) => {
+const weekDayFoListSelect = Object.entries(daysOfTheWeek).map((weekDay) => {
     return {
       name: weekDay[0],
       textValue: weekDay[1].textValue
     }
   })
 
-
 function showTheDaysLessons(weekDay) {
   const lessons = lessonTimetable[0].weeklyLessonPlan[weekDay]
- 
+
   cards.length = 0
   cards.push(...lessons)
 }
 function switchWeekType(weekType) {
-  console.log(weekType);
+  // console.log(weekType);
+}
+function setCurrentDate(weekDay) {
+  const date = new Date()
+  if (!weekDay) return
+
+  const months = ["Январья", "Февралья", "Марта", "Апрелья", "Майя", "Июнья", "Июлья", "Августа", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
+  const weekdayNumber = daysOfTheWeek[weekDay].weekdayNumber
+
+  const currentMonth = date.getMonth()
+  const currentDateOfTheMonth = date.getDate()
+  const currentYear = date.getFullYear()
+  const currentWeekDay = date.getDay()
+
+  const targetDateOfTheMonth = currentDateOfTheMonth - currentWeekDay + weekdayNumber;
+  const setDate = new Date(currentYear, currentMonth, targetDateOfTheMonth)
+
+  const setDateWeekdayDate = setDate.getDate();
+  const setDateMonthNumber = setDate.getMonth()
+
+  const setDateMonthName = months[setDateMonthNumber]
+
+  return`${setDateWeekdayDate} ${setDateMonthName}`
 }
 
+const hasLessonPlan = computed(() => {
+  return lessonTimetable[0].weeklyLessonPlan[currentWeekDay.value]
+});
 </script>
 
 <style scoped>

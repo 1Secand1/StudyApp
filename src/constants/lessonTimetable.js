@@ -147,7 +147,7 @@ export const lessonTimetable = [
           typeOfLessons: 'Теория'
         },
         {
-          number: 3,
+          number: 4,
           subjectTitle: 'Иностранный язык в профессиональной деятельности',
           meetingPlace: 'Правый берег',
           classroom: '4a',

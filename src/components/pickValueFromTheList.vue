@@ -1,16 +1,14 @@
 <template>
   <ul 
-    class="weekday-selection-list"
+    :class="getCurrentClass('selection-list')"
     @click="selectDayOfTheWeek"
   >
     <li
-      class="weekday-selection-list__item"
+      :class="pickItemClass(name)"
       v-for="({name, textValue}) in elements"
-      :class="{ active: selectedWeekdays.includes(name) }"
       :data-weekday="name"
       :key="name"
     >
-      <!-- TODO изменить имя data-weekday -->
       {{ textValue }}
     </li>
   </ul>
@@ -21,24 +19,36 @@ import { ref, onMounted } from 'vue'
 
 const emit = defineEmits(['getElement'])
 const props = defineProps({
-  nema: {
-    type: String,
-    default: 'undefined'
-  },
   type: {
+    type: String,
+    default: 'radio',
     validator(value) {
       return ['radio', 'select'].includes(value)
     }
   },
+  listName: {
+    type: String,
+    default: undefined
+  },
   elements: [Array],
-  selected: [String, Array]
+  selected: [Array]
 })
-
-
-
 
 const selectedWeekdays = ref(props.selected)
 
+function getCurrentClass(userClass, active = true) {
+  const { listName } = props;
+  const selectedClass = !listName ? userClass : `${listName}-${userClass}`;
+  return {
+    [selectedClass]: active,
+  };
+}
+function pickItemClass(pickItemName) {
+  return [
+    getCurrentClass('selection-list__item'),
+    getCurrentClass("active",selectedWeekdays.value.includes(pickItemName))
+  ]
+}
 function radio(weekDay) {
   selectedWeekdays.value = weekDay
 }
@@ -62,7 +72,9 @@ function selectDayOfTheWeek({ target }) {
   }
 
   emit('getElement', selectedWeekdays.value)
+
 }
+
 
 onMounted(() => {
   emit('getElement', props.selected)
@@ -70,8 +82,7 @@ onMounted(() => {
 </script>
 
 <style scoped>
-/* .weekday-selection-list {
-  width: 100%;
+.selection-list{
   display: flex;
   flex-wrap: wrap;
 
@@ -81,17 +92,17 @@ onMounted(() => {
   list-style: none;
 }
 
-.weekday-selection-list__item {
+.selection-list__item {
   text-align: center;
   cursor: pointer;
   flex: 1;
   background: #253334;
   color: white;
   padding: 10px;
-  border-radius: 6px;
-}
+  border-radius: 5px;
+} 
 
 .active {
   background: #623df6;
-} */
+}
 </style>

@@ -5,8 +5,12 @@
   :key="cardInformation.lessonNumber"
 >
 <div class="card-heder">
-  <p>Певая пара</p>
-  <p>8.00 - 9.35</p>
+  <p>{{ bellSchedule[cardInformation.lessonNumber - 1].textName }}</p> 
+  <p>
+    {{bellSchedule[cardInformation.lessonNumber - 1].startTime}} -
+    {{bellSchedule[cardInformation.lessonNumber - 1].endTime}}
+  </p>
+  
 </div>
 
 <article class="card-content">
@@ -30,7 +34,8 @@
 </template>
 
 <script setup>
-import { defineProps,} from 'vue'
+import { defineProps } from 'vue'
+import { bellSchedule } from '../constants/bellSchedule.js'
 
 const props = defineProps(['cards'])
 </script>

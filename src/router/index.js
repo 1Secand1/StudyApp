@@ -23,13 +23,13 @@ const router = createRouter({
 
 const publiclyRoutes = ["login", "registration", "home"];
 
-router.beforeEach((to) => {
-  const thisUserAuthorized = !!localStorage.getItem("jwtToken");
-  const thisRoutePublic = publiclyRoutes.includes(to.name);
+// router.beforeEach((to) => {
+//   const thisUserAuthorized = !!localStorage.getItem("jwtToken");
+//   const thisRoutePublic = publiclyRoutes.includes(to.name);
 
-  thisUserAuthorized || thisRoutePublic
-    ? true
-    : router.push("login");
-});
+//   thisUserAuthorized || thisRoutePublic
+//     ? true
+//     : router.push("login");
+// });
 
 export default router;

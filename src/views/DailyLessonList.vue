@@ -37,7 +37,7 @@ import pickValueFromTheList from '../components/pickValueFromTheList.vue'
 import { daysOfTheWeek } from '../constants/weekDay.js'
 import { lessonTimetable } from '../constants/lessonTimetable.js'
 
-const currentWeekDay = ref(Object.keys(daysOfTheWeek)[new Date().getDay() - 1])
+const currentWeekDay = ref(Object.keys(daysOfTheWeek).at([new Date().getDay()] - 1))
 const weekType = ref("numerator")
 
 const cards = reactive([])

@@ -141,7 +141,7 @@ export const lessonTimetable = {
         {
           lessonNumber: 2,
           subjectTitle: 'МДК.09.01 проектирование и разработка веб-приложений',
-          meetingPlace: 'Левый берегг',
+          meetingPlace: 'Левый берег',
           classroom: '21',
           subgroup: "all ",
           teachersName: 'Паринов Д.Б',
@@ -346,7 +346,6 @@ export const lessonTimetable = {
           typeOfLessons: 'Теория'
         },
       ],
-      sunday: []
     }
   },
 };

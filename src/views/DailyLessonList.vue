@@ -23,8 +23,11 @@
       v-if="hasLessonPlan.length"
       :cards="hasLessonPlan"
     />
+    <p v-else-if="currentWeekDay == 'sunday'">
+      Сегодня выходной ! 
+    </p>
     <p v-else>
-      На сегодня занятий нету
+      На этот день занятий нету
     </p>
   </ul>
 </template>
@@ -37,7 +40,8 @@ import pickValueFromTheList from '../components/pickValueFromTheList.vue'
 import { daysOfTheWeek } from '../constants/weekDay.js'
 import { lessonTimetable } from '../constants/lessonTimetable.js'
 
-const currentWeekDay = ref(Object.keys(daysOfTheWeek).at([new Date().getDay()] - 1))
+const currentWeekDay = ref(Object.keys(daysOfTheWeek)[new Date().getDay()])
+console.log(currentWeekDay.value);
 const weekType = ref("numerator")
 
 const cards = reactive([])
@@ -51,16 +55,19 @@ const weekTypelist = [
     textValue:"Знаменатель"
   },
 ]
-const weekDayFoListSelect = Object.entries(daysOfTheWeek).map((weekDay) => {
-    return {
-      name: weekDay[0],
-      textValue: weekDay[1].textValue
-    }
-  })
+const { sunday, ...otherDays } = daysOfTheWeek;
+const weekDayFoListSelect = Object.entries(otherDays).map((weekDay) => {
+  return {
+    name: weekDay[0],
+    textValue: weekDay[1].textValue
+  };
+});
 
 function setCurrentDate(weekDay) {
+  if (!weekDay) throw new Error("undefined weekDay")
+
   const weekdayNumber = daysOfTheWeek[weekDay]?.weekdayNumber
-  if (!weekdayNumber) return
+  if (weekdayNumber == undefined) throw new Error("unknown day of the week")
 
   const months = ["Январья", "Февралья", "Марта", "Апрелья", "Майя", "Июнья", "Июлья", "Августа", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
 
@@ -70,7 +77,7 @@ function setCurrentDate(weekDay) {
   const currentYear = date.getFullYear()
   const currentWeekDay = date.getDay()
 
-  const targetDateOfTheMonth = currentDateOfTheMonth - currentWeekDay + weekdayNumber;
+  const targetDateOfTheMonth = (currentDateOfTheMonth - currentWeekDay) + weekdayNumber;
   const setDate = new Date(currentYear, currentMonth, targetDateOfTheMonth)
 
   const setDateWeekdayDate = setDate.getDate();

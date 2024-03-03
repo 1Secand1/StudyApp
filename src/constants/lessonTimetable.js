@@ -216,7 +216,7 @@ export const lessonTimetable = {
         {
           lessonNumber: 4,
           subjectTitle: 'МДК.09.01 проектирование и разработка веб-приложений',
-          meetingPlace: 'Правый берег',
+          meetingPlace: 'Левый берег',
           classroom: '18',
           subgroup: "all",
           teachersName: 'Паринов Д.Б',
@@ -225,7 +225,7 @@ export const lessonTimetable = {
         {
           lessonNumber: 5,
           subjectTitle: 'МДК.09.01 проектирование и разработка веб-приложений',
-          meetingPlace: 'Правый берег',
+          meetingPlace: 'Левый берег',
           classroom: '18',
           subgroup: "all",
           teachersName: 'Паринов Д.Б',
@@ -234,7 +234,7 @@ export const lessonTimetable = {
         {
           lessonNumber: 6,
           subjectTitle: 'МДК.09.01 проектирование и разработка веб-приложений',
-          meetingPlace: 'Правый берег',
+          meetingPlace: 'Левый берег',
           classroom: '18',
           subgroup: "all",
           teachersName: 'Паринов Д.Б',
@@ -243,7 +243,7 @@ export const lessonTimetable = {
         {
           lessonNumber: 7,
           subjectTitle: 'МДК.09.01 проектирование и разработка веб-приложений',
-          meetingPlace: 'Правый берег',
+          meetingPlace: 'Левый берег',
           classroom: '18',
           subgroup: "all",
           teachersName: 'Паринов Д.Б',
@@ -254,7 +254,7 @@ export const lessonTimetable = {
         {
           lessonNumber: 2,
           subjectTitle: 'МДК.08.01 проектирование и разработка интерфейсов пользователей',
-          meetingPlace: 'Правый берег',
+          meetingPlace: 'Левый берег',
           classroom: '20',
           subgroup: "all ",
           teachersName: 'Володина Ю.Ю',
@@ -263,7 +263,7 @@ export const lessonTimetable = {
         {
           lessonNumber: 3,
           subjectTitle: 'МДК.08.01 проектирование и разработка интерфейсов пользователей',
-          meetingPlace: 'Правый берег',
+          meetingPlace: 'Левый берег',
           classroom: '20',
           subgroup: "all ",
           teachersName: 'Володина Ю.Ю',
@@ -272,7 +272,7 @@ export const lessonTimetable = {
         {
           lessonNumber: 4,
           subjectTitle: 'МДК.08.01 проектирование и разработка интерфейсов пользователей',
-          meetingPlace: 'Правый берег',
+          meetingPlace: 'Левый берег',
           classroom: '20',
           subgroup: "all ",
           teachersName: 'Володина Ю.Ю',
@@ -283,7 +283,7 @@ export const lessonTimetable = {
         {
           lessonNumber: 1,
           subjectTitle: 'Основы  философии',
-          meetingPlace: 'Правый берег',
+          meetingPlace: 'Левый берег',
           classroom: '19',
           subgroup: "all ",
           teachersName: 'Коровин С.В',
@@ -292,7 +292,7 @@ export const lessonTimetable = {
         {
           lessonNumber: 2,
           subjectTitle: 'Основы  философии',
-          meetingPlace: 'Правый берег',
+          meetingPlace: 'Левый берег',
           classroom: '19',
           subgroup: "all ",
           teachersName: 'Коровин С.В',
@@ -301,7 +301,7 @@ export const lessonTimetable = {
         {
           lessonNumber: 3,
           subjectTitle: 'МДК.05.02 Разработка кода информационных систем',
-          meetingPlace: 'Правый берег',
+          meetingPlace: 'Левый берег',
           classroom: '19',
           subgroup: "all ",
           teachersName: 'Коровин С.В',
@@ -310,7 +310,7 @@ export const lessonTimetable = {
         {
           lessonNumber: 4,
           subjectTitle: 'Иностранный язык в профессиональной деятельности',
-          meetingPlace: 'Правый берег',
+          meetingPlace: 'Левый берег',
           classroom: '4a',
           subgroup: "all ",
           teachersName: 'Коровин С.В',
@@ -321,7 +321,7 @@ export const lessonTimetable = {
         {
           lessonNumber: 1,
           subjectTitle: 'МДК.08.01 Проектирование и разработка интерфейсов пользователей ',
-          meetingPlace: 'Правый берег',
+          meetingPlace: 'Левый берег',
           classroom: '21',
           subgroup: "all ",
           teachersName: 'Сопелкин Р.С',
@@ -330,7 +330,7 @@ export const lessonTimetable = {
         {
           lessonNumber: 2,
           subjectTitle: 'МДК.09.01 проектирование и разработка веб-приложений',
-          meetingPlace: 'Правый берег',
+          meetingPlace: 'Левый берег',
           classroom: '21',
           subgroup: "all ",
           teachersName: 'Паринов Д.Б',
@@ -339,7 +339,7 @@ export const lessonTimetable = {
         {
           lessonNumber: 3,
           subjectTitle: 'МДК.09.01 проектирование и разработка веб-приложений',
-          meetingPlace: 'Правый берег',
+          meetingPlace: 'Левый берег',
           classroom: '21',
           subgroup: "all ",
           teachersName: 'Паринов Д.Б',

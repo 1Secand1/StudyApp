@@ -55,7 +55,9 @@ import SvgIconLoader from './components/icons/SvgIconLoader.vue'
   padding-inline: 16px;
 }
 
-.navigation-menu {}
+.navigation-menu {
+  display: none;
+}
 
 .navigation-menu__list {
   position: fixed;

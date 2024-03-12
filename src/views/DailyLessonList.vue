@@ -1,13 +1,13 @@
 <template>
   <header class="header">
     <div class="date-info">
-      <h2>{{setTargetDateByWeekday(currentWeekDay)}}</h2>
+      <h2>{{ targetDateByWeekday }}</h2>
       <pick-value-from-the-list
         listName="switch"
         type="radio"
         :elements="listOfWeekTypes"
         :selected="weekType"
-        v-model="weekType"
+        v-model="userWeekType"
       />
     </div>
     <pick-value-from-the-list
@@ -42,9 +42,7 @@ import { lessonTimetable } from '../constants/lessonTimetable.js'
 
 const currentWeekDay = ref(getCurrentWeekDay())
 const weekType = ref(determineWeekType())
-
-console.log(weekType.value);
-console.log(weekType.value);
+const userWeekType = ref(determineWeekType())
 
 const listOfWeekTypes = [
   {
@@ -58,21 +56,6 @@ const listOfWeekTypes = [
 ]
 const weekdayList = getWeekdayList()
 
-function setTargetDateByWeekday(weekday, typeWekday) {
-  if (!weekday) throw new Error("Weekday is not defined");
-
-  const weekdayNumber =  daysOfTheWeek[weekday]?.weekdayNumber;
-  if (weekdayNumber === undefined) throw new Error("Unknown day of the week");
-
-  const months = ["Январья", "Февралья", "Марта", "Апрелья", "Майя", "Июнья", "Июлья", "Августа", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
-
-  const currentDate = new Date();
-
-  const daysToSubtract = currentDate.getDay() - weekdayNumber;
-  currentDate.setDate(currentDate.getDate() - daysToSubtract);
-
-  return `${currentDate.getDate() + 7} ${months[currentDate.getMonth()]}`;
-}
 function determineWeekType() {
   const currentDate = new Date();
   // Дата установлена на первое января текущего года  
@@ -97,8 +80,28 @@ function getCurrentWeekDay() {
 }
 
 const hasLessonPlan = computed(() => {
-  return lessonTimetable[weekType.value].weeklyLessonPlan[currentWeekDay.value]
+  return lessonTimetable[userWeekType.value].weeklyLessonPlan[currentWeekDay.value]
 });
+
+const targetDateByWeekday = computed(() => {
+if (!currentWeekDay.value) throw new Error("Weekday is not defined");
+
+const weekdayNumber = daysOfTheWeek[currentWeekDay.value]?.weekdayNumber;
+if (weekdayNumber === undefined) throw new Error("Unknown day of the week");
+
+const months = ["Январья", "Февралья", "Марта", "Апрелья", "Майя", "Июнья", "Июлья", "Августа", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
+
+const currentDate = new Date();
+
+if ( userWeekType.value !== weekType.value) {
+  currentDate.setDate(currentDate.getDate() + 7)
+}
+
+const daysToSubtract = currentDate.getDay() - weekdayNumber;
+currentDate.setDate(currentDate.getDate() - daysToSubtract);
+
+return `${currentDate.getDate()} ${months[currentDate.getMonth()]}`;
+})
 </script>
 
 <style scoped>

@@ -5,12 +5,11 @@
   :key="cardInformation.lessonNumber"
 >
 <div class="card-heder">
-  <p>{{ bellSchedule[cardInformation.lessonNumber - 1].textName }}</p> 
+  <p>{{ bellSchedule[cardInformation.lessonNumber - 1].textName }} пара: </p> 
   <p>
     {{bellSchedule[cardInformation.lessonNumber - 1].startTime}} -
-    {{bellSchedule[cardInformation.lessonNumber - 1].endTime}}
+    {{bellSchedule[cardInformation.lessonNumber - 1].endTime}} 
   </p>
-  
 </div>
 
 <article class="card-content">
@@ -37,7 +36,7 @@
 import { defineProps } from 'vue'
 import { bellSchedule } from '../constants/bellSchedule.js'
 
-const props = defineProps(['cards'])
+defineProps(['cards'])
 </script>
 
 <style scoped>
@@ -47,7 +46,7 @@ const props = defineProps(['cards'])
 
 .card-heder{
   display: flex;
-  justify-content: space-between;
+  gap: 5px;
 }
 
 .card-content {
@@ -75,8 +74,8 @@ const props = defineProps(['cards'])
   flex: 1 0 150px;
 
   border-radius: 5px;
-  background: #246BFD;
-
+  background: #505254;
+  
   padding: 5px 10px;
 
   font-size: 12px;

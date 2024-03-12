@@ -1,18 +1,18 @@
 <template>
   <header class="header">
     <div class="date-info">
-      <h2>{{setCurrentDate(currentWeekDay)}}</h2>
+      <h2>{{setTargetDateByWeekday(currentWeekDay)}}</h2>
       <pick-value-from-the-list
         listName="switch"
         type="radio"
-        :elements="weekTypelist"
+        :elements="listOfWeekTypes"
         :selected="weekType"
         v-model="weekType"
       />
     </div>
     <pick-value-from-the-list
       type="radio"
-      :elements="weekDayFoListSelect"
+      :elements="weekdayList"
       :selected="currentWeekDay"
       v-model="currentWeekDay"
     />
@@ -40,12 +40,13 @@ import pickValueFromTheList from '../components/pickValueFromTheList.vue'
 import { daysOfTheWeek } from '../constants/weekDay.js'
 import { lessonTimetable } from '../constants/lessonTimetable.js'
 
-const currentWeekDay = ref(Object.keys(daysOfTheWeek)[new Date().getDay()])
-console.log(currentWeekDay.value);
-const weekType = ref("numerator")
+const currentWeekDay = ref(getCurrentWeekDay())
+const weekType = ref(determineWeekType())
 
-const cards = reactive([])
-const weekTypelist = [
+console.log(weekType.value);
+console.log(weekType.value);
+
+const listOfWeekTypes = [
   {
     name: "numerator",
     textValue:"Числитель"
@@ -55,37 +56,44 @@ const weekTypelist = [
     textValue:"Знаменатель"
   },
 ]
-const { sunday, ...otherDays } = daysOfTheWeek;
-const weekDayFoListSelect = Object.entries(otherDays).map((weekDay) => {
-  return {
-    name: weekDay[0],
-    textValue: weekDay[1].textValue
-  };
-});
+const weekdayList = getWeekdayList()
 
-function setCurrentDate(weekDay) {
-  if (!weekDay) throw new Error("undefined weekDay")
+function setTargetDateByWeekday(weekday, typeWekday) {
+  if (!weekday) throw new Error("Weekday is not defined");
 
-  const weekdayNumber = daysOfTheWeek[weekDay]?.weekdayNumber
-  if (weekdayNumber == undefined) throw new Error("unknown day of the week")
+  const weekdayNumber =  daysOfTheWeek[weekday]?.weekdayNumber;
+  if (weekdayNumber === undefined) throw new Error("Unknown day of the week");
 
   const months = ["Январья", "Февралья", "Марта", "Апрелья", "Майя", "Июнья", "Июлья", "Августа", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
 
-  const date = new Date()
-  const currentMonth = date.getMonth()
-  const currentDateOfTheMonth = date.getDate()
-  const currentYear = date.getFullYear()
-  const currentWeekDay = date.getDay()
+  const currentDate = new Date();
 
-  const targetDateOfTheMonth = (currentDateOfTheMonth - currentWeekDay) + weekdayNumber;
-  const setDate = new Date(currentYear, currentMonth, targetDateOfTheMonth)
+  const daysToSubtract = currentDate.getDay() - weekdayNumber;
+  currentDate.setDate(currentDate.getDate() - daysToSubtract);
 
-  const setDateWeekdayDate = setDate.getDate();
-  const setDateMonthNumber = setDate.getMonth()
+  return `${currentDate.getDate() + 7} ${months[currentDate.getMonth()]}`;
+}
+function determineWeekType() {
+  const currentDate = new Date();
+  // Дата установлена на первое января текущего года  
+  const startOfYear = new Date(currentDate.getFullYear(), 0, 1);
+  const millisecondsPerWeek = 1000 * 3600 * 24 * 7;
+  const weeksElapsed = (currentDate - startOfYear) / millisecondsPerWeek | 0
 
-  const setDateMonthName = months[setDateMonthNumber]
+  return weeksElapsed % 2 === 0 ? "numerator" : "denominator";
+}
+function getWeekdayList() {
+  const { sunday, ...otherDays } = daysOfTheWeek;
 
-  return`${setDateWeekdayDate} ${setDateMonthName}`
+  return Object.entries(otherDays).map((weekDay) => {
+    return {
+      name: weekDay[0],
+      textValue: weekDay[1].textValue
+    };
+  });
+}
+function getCurrentWeekDay() {
+  return Object.keys(daysOfTheWeek)[new Date().getDay()]
 }
 
 const hasLessonPlan = computed(() => {
@@ -107,13 +115,14 @@ const hasLessonPlan = computed(() => {
   margin-bottom: auto;
   margin-left: auto;
   margin-right: auto;
-background: red;
+  background: red;
 }
 
 .header{
   position: sticky;
   top: 0;
   background: white;
+  padding:5px 0;
 }
 
 .date-info{
@@ -137,6 +146,7 @@ background: red;
   gap: 10px;
 }
 .switch-selection-list__item{
+  cursor: pointer;
   padding: 2px 5px;
   border-radius: 5px;
 }

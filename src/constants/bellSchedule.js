@@ -1,36 +1,36 @@
 export const bellSchedule = [
   {
-    textName: "Первая пара",
+    textName: "Первая",
     startTime: "8:00",
     endTime: "9:35",
   },
   {
-    textName: "Вторая пара",
+    textName: "Вторая",
     startTime: "9:45",
     endTime: "11:20",
   },
   {
-    textName: "Третья пара",
+    textName: "Третья",
     startTime: "11:50",
     endTime: "13:25",
   },
   {
-    textName: "Четвёртая пар",
+    textName: "Четвёртая",
     startTime: "13:35",
     endTime: "15:10",
   },
   {
-    textName: "Пятая пара",
+    textName: "Пятая",
     startTime: "15:20",
     endTime: "16:55",
   },
   {
-    textName: "Шестая пара",
+    textName: "Шестая",
     startTime: "17:05",
     endTime: "18:40",
   },
   {
-    textName: "Седьмая пара",
+    textName: "Седьмая",
     startTime: "18:50",
     endTime: "20:25",
   },

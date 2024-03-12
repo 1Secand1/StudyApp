@@ -8,12 +8,6 @@ const routes = [
     name: "DailyLessonList",
     component: DailyLessonList,
   },
-  {
-    path: "/login",
-    name: "login",
-    component: () => import("../views/AuthLogin.vue"),
-  },
-
 ];
 
 const router = createRouter({

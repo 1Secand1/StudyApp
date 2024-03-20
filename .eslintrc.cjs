@@ -41,5 +41,6 @@ module.exports = {
         ignores: []
       }
     ]
+    "vue/valid-template-root": "off",
   }
 };

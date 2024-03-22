@@ -88,6 +88,15 @@ export const lessonTimetable = {
           subgroup: "all ",
           teachersName: 'Володина Ю.Ю',
           typeOfLessons: 'Лабораторная'
+        },
+        {
+          lessonNumber: 4,
+          subjectTitle: 'МДК.08.01 проектирование и разработка интерфейсов пользователей',
+          meetingPlace: 'Левый берег',
+          classroom: '20',
+          subgroup: "all ",
+          teachersName: 'Володина Ю.Ю',
+          typeOfLessons: 'Лабораторная'
         }
       ],
       friday: [
@@ -269,15 +278,6 @@ export const lessonTimetable = {
           teachersName: 'Володина Ю.Ю',
           typeOfLessons: 'Лабораторная'
         },
-        {
-          lessonNumber: 4,
-          subjectTitle: 'МДК.08.01 проектирование и разработка интерфейсов пользователей',
-          meetingPlace: 'Левый берег',
-          classroom: '20',
-          subgroup: "all ",
-          teachersName: 'Володина Ю.Ю',
-          typeOfLessons: 'Лабораторная'
-        },
       ],
       friday: [
         {
@@ -291,12 +291,12 @@ export const lessonTimetable = {
         },
         {
           lessonNumber: 2,
-          subjectTitle: 'Основы  философии',
+          subjectTitle: 'МДК.05.02 Разработка кода информационных систем',
           meetingPlace: 'Левый берег',
           classroom: '19',
           subgroup: "all ",
-          teachersName: 'Коровин С.В',
-          typeOfLessons: 'Лекция'
+          teachersName: 'Бавыкена Е.Г',
+          typeOfLessons: 'Теория'
         },
         {
           lessonNumber: 3,
@@ -304,7 +304,7 @@ export const lessonTimetable = {
           meetingPlace: 'Левый берег',
           classroom: '19',
           subgroup: "all ",
-          teachersName: 'Коровин С.В',
+          teachersName: 'Бавыкена Е.Г',
           typeOfLessons: 'Теория'
         },
         {
@@ -313,7 +313,7 @@ export const lessonTimetable = {
           meetingPlace: 'Левый берег',
           classroom: '4a',
           subgroup: "all ",
-          teachersName: 'Коровин С.В',
+          teachersName: 'Сидельникова И.В',
           typeOfLessons: 'Теория'
         },
       ],

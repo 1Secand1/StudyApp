@@ -8,6 +8,11 @@ const routes = [
     name: "DailyLessonList",
     component: DailyLessonList,
   },
+  {
+    path: "/userSettings",
+    name: "userSettings",
+    component: import('@/views/Presettings.vue'),
+  },
 ];
 
 const router = createRouter({

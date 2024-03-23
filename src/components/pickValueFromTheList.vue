@@ -34,6 +34,8 @@ const props = defineProps({
   selected: [Array,String],
 })
 
+
+
 const selectedWeekdays = ref(props.selected)
 
 function getCurrentClass(userClass, active = true) {
@@ -44,10 +46,17 @@ function getCurrentClass(userClass, active = true) {
   };
 }
 function pickItemClass(pickItemName) {
-  return [
-    getCurrentClass('selection-list__item'),
-    getCurrentClass("active",selectedWeekdays.value.includes(pickItemName))
-  ]
+  if (props.type === 'radio') {
+    return [
+      getCurrentClass('selection-list__item'),
+      getCurrentClass('active', selectedWeekdays.value === pickItemName)
+    ]
+  } else {
+    return [
+      getCurrentClass('selection-list__item'),
+      getCurrentClass('active', selectedWeekdays.value.includes(pickItemName))
+    ]
+  }
 }
 function radio(weekDay) {
   selectedWeekdays.value = weekDay
@@ -65,14 +74,11 @@ function selectDayOfTheWeek({ target }) {
   const { tagName, dataset } = target
   if (tagName !== 'LI') return
 
-  if (props.type === 'radio') {
-    radio(dataset.weekday)
-  } else {
-    select(dataset.weekday)
-  }
+  props.type === 'radio' 
+    ? radio(dataset.weekday) 
+    : select(dataset.weekday)
 
   emit('update:modelValue', selectedWeekdays.value)
-
 }
 
 

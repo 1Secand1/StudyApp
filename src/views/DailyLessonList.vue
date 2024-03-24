@@ -23,9 +23,6 @@
       v-if="hasLessonPlan.length"
       :cards="hasLessonPlan"
     />
-    <p v-else-if="currentWeekDay == 'sunday'">
-      Сегодня выходной ! 
-    </p>
     <p v-else>
       На этот день занятий нету
     </p>
@@ -80,13 +77,13 @@ function getCurrentWeekDay() {
 }
 
 const hasLessonPlan = computed(() => {
-  return lessonTimetable[userWeekType.value].weeklyLessonPlan[currentWeekDay.value]
+  return lessonTimetable[userWeekType.value].weeklyLessonPlan[currentWeekDay.value] || []
 });
 
 const targetDateByWeekday = computed(() => {
 if (!currentWeekDay.value) throw new Error("Weekday is not defined");
 
-const weekdayNumber = daysOfTheWeek[currentWeekDay.value]?.weekdayNumber;
+const weekdayNumber = daysOfTheWeek[currentWeekDay.value].weekdayNumber;
 if (weekdayNumber === undefined) throw new Error("Unknown day of the week");
 
 const months = ["Январья", "Февралья", "Марта", "Апрелья", "Майя", "Июнья", "Июлья", "Августа", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];

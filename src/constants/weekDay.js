@@ -1,4 +1,8 @@
 export const daysOfTheWeek = {
+  sunday: {
+    textValue: 'Сб',
+    weekdayNumber: 7
+  },
   monday: {
     textValue: 'Пн',
     weekdayNumber: 1
@@ -22,5 +26,5 @@ export const daysOfTheWeek = {
   saturday: {
     textValue: 'Сб',
     weekdayNumber: 6
-  },
-};
+  }
+}

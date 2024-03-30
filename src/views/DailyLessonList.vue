@@ -73,7 +73,7 @@ function getWeekdayList() {
   });
 }
 function getCurrentWeekDay() {
-  return Object.keys(daysOfTheWeek)[new Date().getDay() - 1]
+  return Object.keys(daysOfTheWeek)[new Date().getDay()]
 }
 
 const hasLessonPlan = computed(() => {

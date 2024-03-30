@@ -166,7 +166,6 @@ export const lessonTimetable = {
           typeOfLessons: 'Теория'
         },
       ],
-      sunday: []
     }
   },
   denominator: {

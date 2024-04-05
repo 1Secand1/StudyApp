@@ -124,7 +124,7 @@ export const lessonTimetable = {
           meetingPlace: 'Левый берег',
           classroom: '19',
           subgroup: "all ",
-          teachersName: 'Коровин С.В',
+          teachersName: 'Бавыкина Е.Г',
           typeOfLessons: 'Теория'
         },
         {
@@ -133,7 +133,7 @@ export const lessonTimetable = {
           meetingPlace: 'Левый берег',
           classroom: '4a',
           subgroup: "all ",
-          teachersName: 'Коровин С.В',
+          teachersName: 'Сидельникова И.В',
           typeOfLessons: 'Теория'
         },
       ],

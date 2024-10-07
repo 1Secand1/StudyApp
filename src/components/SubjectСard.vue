@@ -21,6 +21,9 @@
     <li class="parameter-item">
       Аудитория {{ cardInformation.classroom }}
     </li>
+    <li class="parameter-item" v-if="cardInformation.subgroup !== 'all'">
+        Группа {{ cardInformation.subgroup}}
+    </li>
     <li class="parameter-item">
       {{ cardInformation.teachersName}}
     </li>

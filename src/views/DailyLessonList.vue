@@ -60,7 +60,7 @@ function determineWeekType() {
   const millisecondsPerWeek = 1000 * 3600 * 24 * 7;
   const weeksElapsed = (currentDate - startOfYear) / millisecondsPerWeek | 0
 
-  return weeksElapsed % 2 === 0 ? "numerator" : "denominator";
+  return weeksElapsed % 2 === 0 ? "denominator" : "numerator";
 }
 function getWeekdayList() {
   const { sunday, ...otherDays } = daysOfTheWeek;
@@ -153,5 +153,8 @@ return `${currentDate.getDate()} ${months[currentDate.getMonth()]}`;
 .switch-active {
   color: white;
   background: #623df6;
+}
+.switch-outline{
+  border: solid 1px #623df6;
 }
 </style>

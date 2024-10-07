@@ -4,8 +4,8 @@
     @click="selectDayOfTheWeek"
   >
     <li
+    v-for="({name, textValue}) in elements"
       :class="pickItemClass(name)"
-      v-for="({name, textValue}) in elements"
       :data-weekday="name"
       :key="name"
     >
@@ -43,15 +43,19 @@ function getCurrentClass(userClass, active = true) {
     [selectedClass]: active,
   };
 }
+
 function pickItemClass(pickItemName) {
   return [
     getCurrentClass('selection-list__item'),
-    getCurrentClass("active",selectedWeekdays.value.includes(pickItemName))
+    getCurrentClass("active",selectedWeekdays.value.includes(pickItemName)),
+    getCurrentClass('outline',props.selected == pickItemName),
   ]
 }
+
 function radio(weekDay) {
   selectedWeekdays.value = weekDay
 }
+
 function select(weekDay) {
   if (!selectedWeekdays.value.includes(weekDay)) {
     selectedWeekdays.value.push(weekDay)
@@ -61,6 +65,7 @@ function select(weekDay) {
     )
   }
 }
+
 function selectDayOfTheWeek({ target }) {
   const { tagName, dataset } = target
   if (tagName !== 'LI') return
@@ -72,13 +77,12 @@ function selectDayOfTheWeek({ target }) {
   }
 
   emit('update:modelValue', selectedWeekdays.value)
-
 }
-
 
 onMounted(() => {
   emit('update:modelValue', props.selected)
 })
+
 </script>
 
 <style scoped>

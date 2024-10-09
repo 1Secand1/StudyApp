@@ -1,4 +1,6 @@
 <template>
+ <router-link :to="{ path: 'countdownTimer' }">Таймер</router-link>
+
   <header class="header">
     <div class="date-info">
       <h2>{{ targetDateByWeekday }}</h2>
@@ -36,6 +38,7 @@ import subjectCard from '../components/SubjectСard.vue'
 import pickValueFromTheList from '../components/pickValueFromTheList.vue'
 import { daysOfTheWeek } from '../constants/weekDay.js'
 import { lessonTimetable } from '../constants/lessonTimetable.js'
+import router from '@/router'
 
 const currentWeekDay = ref(getCurrentWeekDay())
 const weekType = ref(determineWeekType())

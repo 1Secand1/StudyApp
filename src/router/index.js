@@ -13,6 +13,11 @@ const routes = [
     name: "userSettings",
     component: import('@/views/Presettings.vue'),
   },
+  {
+    path: "/countdownTimer",
+    name: "countdownTimer",
+    component: import('@/views/CountdownTimer.vue'),
+  },
 ];
 
 const router = createRouter({

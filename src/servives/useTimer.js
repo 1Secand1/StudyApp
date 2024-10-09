@@ -4,18 +4,23 @@ export class useTimer {
     seconds = ref(0)
     minutes = ref(0)
     hour = ref(0)
+    message = ""
 
     timestamps = []
     inexTargetTimestamps = 0
     taimerInterval = null
 
+
     constructor(timestamps) {
         this.timestamps = timestamps
 
-        const index = this.timestamps.findIndex(element => Number(element.split(":")[0]) > 10);
-        this.inexTargetTimestamps = index
+        const actualElementIndex = this.findActualElementIndex(this.timestamps)
 
-        if (index) this.nextTaime()
+        if (actualElementIndex != -1) {
+            this.inexTargetTimestamps = actualElementIndex
+            this.nextTaime()
+        }
+
     }
 
     updateTimer(targetTimestamp) {
@@ -27,7 +32,6 @@ export class useTimer {
             differenceInMilliseconds = 0;
 
             this.inexTargetTimestamps++
-
             this.nextTaime()
         }
 
@@ -40,14 +44,27 @@ export class useTimer {
     }
 
     nextTaime() {
-        const targetTime = this.timestamps[this.inexTargetTimestamps]
+        const targetTime = this.timestamps[this.inexTargetTimestamps].time
 
         if (!targetTime) return
+
+        this.message = this.timestamps[this.inexTargetTimestamps].message
 
         const [TargetHour, TargetMinuts] = targetTime.split(':')
         const targetTimestamp = new Date().setHours(TargetHour, TargetMinuts);
 
         clearInterval(this.taimerInterval)
         this.taimerInterval = setInterval(() => this.updateTimer(targetTimestamp), 1000);
+    }
+
+    findActualElementIndex(arr) {
+        const currentDate = new Date()
+        const currentHour = currentDate.getHours()
+        const currentMinutes = currentDate.getMinutes()
+
+        return arr.findIndex(({ time }) => {
+            const [targetHour, targetMinutes] = time.split(":")
+            return targetHour > currentHour || (targetHour === currentHour && targetMinutes > currentMinutes);
+        });
     }
 }

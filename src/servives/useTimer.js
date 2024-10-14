@@ -4,7 +4,7 @@ export class useTimer {
     seconds = ref(0)
     minutes = ref(0)
     hour = ref(0)
-    message = ""
+    message = ref("")
 
     timestamps = []
     inexTargetTimestamps = 0
@@ -48,7 +48,7 @@ export class useTimer {
 
         if (!targetTime) return
 
-        this.message = this.timestamps[this.inexTargetTimestamps].message
+        this.message.value = this.timestamps[this.inexTargetTimestamps].message
 
         const [TargetHour, TargetMinuts] = targetTime.split(':')
         const targetTimestamp = new Date().setHours(TargetHour, TargetMinuts);
@@ -63,8 +63,11 @@ export class useTimer {
         const currentMinutes = currentDate.getMinutes()
 
         return arr.findIndex(({ time }) => {
-            const [targetHour, targetMinutes] = time.split(":")
-            return targetHour > currentHour || (targetHour === currentHour && targetMinutes > currentMinutes);
+            const [targetHour, targetMinutes] = time.split(":").map(Number);
+            return (
+                targetHour > currentHour ||
+                (targetHour === currentHour && targetMinutes > currentMinutes)
+            );
         });
     }
 }

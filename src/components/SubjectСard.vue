@@ -1,38 +1,38 @@
 <template>
-<li 
-  class="card" 
-  v-for="cardInformation in cards" 
-  :key="cardInformation.lessonNumber"
->
-<div class="card-heder">
-  <p>{{ bellSchedule[cardInformation.lessonNumber - 1].textName }} пара: </p> 
-  <p>
-    {{bellSchedule[cardInformation.lessonNumber - 1].startTime}} -
-    {{bellSchedule[cardInformation.lessonNumber - 1].endTime}} 
-  </p>
-</div>
+  <li
+    class="card"
+    v-for="cardInformation in cards"
+    :key="cardInformation.lessonNumber"
+  >
+    <div class="card-heder">
+      <p>{{ bellSchedule[cardInformation.lessonNumber - 1].textName }} пара:</p>
+      <p>
+        {{ bellSchedule[cardInformation.lessonNumber - 1].startTime }} -
+        {{ bellSchedule[cardInformation.lessonNumber - 1].endTime }}
+      </p>
+    </div>
 
-<article class="card-content">
-  <h3>{{ cardInformation.subjectTitle }}</h3>
-  <ul class="parameter-list">
-    <li class="parameter-item">
-      {{ cardInformation.meetingPlace }}
-    </li>
-    <li class="parameter-item">
-      Аудитория {{ cardInformation.classroom }}
-    </li>
-    <li class="parameter-item" v-if="cardInformation.subgroup !== 'all'">
-        Группа {{ cardInformation.subgroup}}
-    </li>
-    <li class="parameter-item">
-      {{ cardInformation.teachersName}}
-    </li>
-    <li class="parameter-item">
-      {{ cardInformation.typeOfLessons}}
-    </li>
-  </ul>
-</article>
-</li>
+    <article class="card-content">
+      <h3 class="card-titile">{{ cardInformation.subjectTitle }}</h3>
+      <ul class="parameter-list">
+        <li class="parameter-item">
+          {{ cardInformation.meetingPlace }}
+        </li>
+        <li class="parameter-item">
+          Аудитория {{ cardInformation.classroom }}
+        </li>
+        <li class="parameter-item" v-if="cardInformation.subgroup !== 'all'">
+          Группа {{ cardInformation.subgroup }}
+        </li>
+        <li class="parameter-item">
+          {{ cardInformation.teachersName }}
+        </li>
+        <li class="parameter-item">
+          {{ cardInformation.typeOfLessons }}
+        </li>
+      </ul>
+    </article>
+  </li>
 </template>
 
 <script setup>
@@ -43,17 +43,21 @@ defineProps(['cards'])
 </script>
 
 <style scoped>
-.card{
+.card {
   list-style-type: none;
 }
 
-.card-heder{
+.card-heder {
   display: flex;
   gap: 5px;
 }
 
+.card-titile {
+  font-size: 16px;
+}
+
 .card-content {
-  margin-top: 5px;  
+  margin-top: 5px;
   padding: 15px;
 
   background: #253334;
@@ -78,10 +82,10 @@ defineProps(['cards'])
 
   border-radius: 5px;
   background: #505254;
-  
+
   padding: 5px 10px;
 
-  font-size: 12px;
+  font-size: 14px;
   color: white;
 }
 

@@ -1,8 +1,5 @@
 <template>
-  <ul 
-    class="weekday-selection-list"
-    @click="selectDayOfTheWeek"
-  >
+  <ul class="weekday-selection-list" @click="selectDayOfTheWeek">
     <li
       class="weekday-selection-list__item"
       v-for="(weekDayText, weekDay) in daysOfTheWeek"
@@ -10,7 +7,7 @@
       :data-weekday="weekDay"
       :key="weekDay"
     >
-    <!-- TODO изменить имя data-weekday -->
+      <!-- TODO изменить имя data-weekday -->
       {{ weekDayText.textValue }}
     </li>
   </ul>
@@ -18,7 +15,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import {daysOfTheWeek} from "../constants/weekDay.js"
+import { daysOfTheWeek } from '../constants/weekDay.js'
 
 const emit = defineEmits(['getDay'])
 const props = defineProps({
@@ -39,7 +36,9 @@ function select(weekDay) {
   if (!selectedWeekdays.value.includes(weekDay)) {
     selectedWeekdays.value.push(weekDay)
   } else {
-    selectedWeekdays.value = selectedWeekdays.value.filter((item) => item !== weekDay)
+    selectedWeekdays.value = selectedWeekdays.value.filter(
+      (item) => item !== weekDay
+    )
   }
 }
 function selectDayOfTheWeek({ target }) {
@@ -72,7 +71,7 @@ onMounted(() => {
   list-style: none;
 }
 
-.weekday-selection-list__item{
+.weekday-selection-list__item {
   text-align: center;
   cursor: pointer;
   flex: 1;
@@ -83,6 +82,6 @@ onMounted(() => {
 }
 
 .active {
-  background: #623DF6;
+  background: #623df6;
 }
 </style>

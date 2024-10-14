@@ -23,12 +23,12 @@ export const lessonTimetable = {
         },
         {
           lessonNumber: 4,
-          subjectTitle: 'Экономика',
-          meetingPlace: 'Правый берег',
-          classroom: '406',
-          subgroup: "all",
-          teachersName: 'Беляева М.В',
-          typeOfLessons: 'Лекция'
+          subjectTitle: 'МДК 08.02',
+          meetingPlace: 'Левый берег',
+          classroom: '20',
+          subgroup: "1",
+          teachersName: 'Володина Ю.Ю',
+          typeOfLessons: 'Лабороторная'
         },
         {
           lessonNumber: 5,
@@ -68,15 +68,7 @@ export const lessonTimetable = {
           teachersName: 'Володина Ю.Ю',
           typeOfLessons: 'Лабораторная'
         },
-        {
-          lessonNumber: 4,
-          subjectTitle: 'МДК.08.01 проектирование и разработка интерфейсов пользователей',
-          meetingPlace: 'Левый берег',
-          classroom: '20',
-          subgroup: "all ",
-          teachersName: 'Володина Ю.Ю',
-          typeOfLessons: 'Лабораторная'
-        }
+
       ],
       wednesday: [
         {
@@ -163,7 +155,7 @@ export const lessonTimetable = {
           subjectTitle: 'МДК 02.01 (PHP)',
           meetingPlace: 'Правый берег',
           classroom: '335',
-          subgroup: "2",
+          subgroup: "1",
           teachersName: 'Курдюков А.А',
           typeOfLessons: 'Практика'
         },
@@ -172,7 +164,7 @@ export const lessonTimetable = {
           subjectTitle: 'МДК 02.01 (PHP)',
           meetingPlace: 'Правый берег',
           classroom: '335',
-          subgroup: "2",
+          subgroup: "1",
           teachersName: 'Курдюков А.А',
           typeOfLessons: 'Практика'
         },
@@ -325,6 +317,15 @@ export const lessonTimetable = {
           teachersName: 'Курдюков А.А',
           typeOfLessons: 'Практика'
         },
+        {
+          lessonNumber: 4,
+          subjectTitle: 'МДК 02.01 (PHP)',
+          meetingPlace: 'Правый берег',
+          classroom: '335',
+          subgroup: "2",
+          teachersName: 'Курдюков А.А',
+          typeOfLessons: 'Практика'
+        }
       ],
       friday: [
         {
@@ -337,31 +338,13 @@ export const lessonTimetable = {
           typeOfLessons: 'Лекция'
         },
         {
-          lessonNumber: 2,
-          subjectTitle: 'МДК.05.02 Разработка кода информационных систем',
-          meetingPlace: 'Левый берег',
-          classroom: '19',
-          subgroup: "all ",
-          teachersName: 'Бавыкена Е.Г',
-          typeOfLessons: 'Теория'
-        },
-        {
-          lessonNumber: 3,
-          subjectTitle: 'МДК.05.02 Разработка кода информационных систем',
-          meetingPlace: 'Левый берег',
-          classroom: '19',
-          subgroup: "all ",
-          teachersName: 'Бавыкена Е.Г',
-          typeOfLessons: 'Теория'
-        },
-        {
-          lessonNumber: 4,
-          subjectTitle: 'Иностранный язык в профессиональной деятельности',
-          meetingPlace: 'Левый берег',
-          classroom: '4a',
-          subgroup: "all ",
-          teachersName: 'Сидельникова И.В',
-          typeOfLessons: 'Теория'
+          lessonNumber: 6,
+          subjectTitle: 'МДК 02.01 (PHP)',
+          meetingPlace: 'Правый берег',
+          classroom: 'Дистант',
+          subgroup: "all",
+          teachersName: 'Курдюков А.А',
+          typeOfLessons: 'Лекция'
         },
       ],
       saturday: [

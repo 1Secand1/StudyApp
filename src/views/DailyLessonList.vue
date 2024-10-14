@@ -10,22 +10,20 @@
         v-model="userWeekType"
       />
     </div>
-    <pick-value-from-the-list
-      type="radio"
-      :elements="weekdayList"
-      :selected="currentWeekDay"
-      v-model="currentWeekDay"
-    />
   </header>
 
+  <pick-value-from-the-list
+    type="radio"
+    :elements="weekdayList"
+    :selected="currentWeekDay"
+    v-model="currentWeekDay"
+  />
+
+  <countdown-timer style="margin-top: 10px" :lesons="lessonNumbers" />
+
   <ul class="time-section-list">
-    <subject-card
-      v-if="hasLessonPlan.length"
-      :cards="hasLessonPlan"
-    />
-    <p v-else>
-      На этот день занятий нету
-    </p>
+    <subject-card v-if="hasLessonPlan.length" :cards="hasLessonPlan" />
+    <p v-else>На этот день занятий нету</p>
   </ul>
 </template>
 
@@ -34,6 +32,7 @@ import { computed, reactive, ref } from 'vue'
 
 import subjectCard from '../components/SubjectСard.vue'
 import pickValueFromTheList from '../components/pickValueFromTheList.vue'
+import countdownTimer from '@/views/countdownTimer.vue'
 import { daysOfTheWeek } from '../constants/weekDay.js'
 import { lessonTimetable } from '../constants/lessonTimetable.js'
 
@@ -43,72 +42,95 @@ const userWeekType = ref(determineWeekType())
 
 const listOfWeekTypes = [
   {
-    name: "numerator",
-    textValue:"Числитель"
+    name: 'numerator',
+    textValue: 'Числитель'
   },
   {
-    name: "denominator",
-    textValue:"Знаменатель"
-  },
+    name: 'denominator',
+    textValue: 'Знаменатель'
+  }
 ]
+
+const hasLessonPlan = computed(() => {
+  return (
+    lessonTimetable[userWeekType.value].weeklyLessonPlan[
+      currentWeekDay.value
+    ] || []
+  )
+})
+
+const lessonNumbers = computed(() =>
+  hasLessonPlan.value.map(({ lessonNumber }) => lessonNumber)
+)
+
+const targetDateByWeekday = computed(() => {
+  if (!currentWeekDay.value) throw new Error('Weekday is not defined')
+
+  const weekdayNumber = daysOfTheWeek[currentWeekDay.value].weekdayNumber
+  if (weekdayNumber === undefined) throw new Error('Unknown day of the week')
+
+  const months = [
+    'Январья',
+    'Февралья',
+    'Марта',
+    'Апрелья',
+    'Майя',
+    'Июнья',
+    'Июлья',
+    'Августа',
+    'Сентябрь',
+    'Октябрь',
+    'Ноябрь',
+    'Декабрь'
+  ]
+
+  const currentDate = new Date()
+
+  if (userWeekType.value !== weekType.value) {
+    currentDate.setDate(currentDate.getDate() + 7)
+  }
+
+  const daysToSubtract = currentDate.getDay() - weekdayNumber
+  currentDate.setDate(currentDate.getDate() - daysToSubtract)
+
+  return `${currentDate.getDate()} ${months[currentDate.getMonth()]}`
+})
+
 const weekdayList = getWeekdayList()
 
 function determineWeekType() {
-  const currentDate = new Date();
-  // Дата установлена на первое января текущего года  
-  const startOfYear = new Date(currentDate.getFullYear(), 0, 1);
-  const millisecondsPerWeek = 1000 * 3600 * 24 * 7;
-  const weeksElapsed = (currentDate - startOfYear) / millisecondsPerWeek | 0
+  const currentDate = new Date()
+  // Дата установлена на первое января текущего года
+  const startOfYear = new Date(currentDate.getFullYear(), 0, 1)
+  const millisecondsPerWeek = 1000 * 3600 * 24 * 7
+  const weeksElapsed = ((currentDate - startOfYear) / millisecondsPerWeek) | 0
 
-  return weeksElapsed % 2 === 0 ? "denominator" : "numerator";
+  return weeksElapsed % 2 === 0 ? 'denominator' : 'numerator'
 }
 function getWeekdayList() {
-  const { sunday, ...otherDays } = daysOfTheWeek;
+  const { sunday, ...otherDays } = daysOfTheWeek
 
   return Object.entries(otherDays).map((weekDay) => {
     return {
       name: weekDay[0],
       textValue: weekDay[1].textValue
-    };
-  });
+    }
+  })
 }
 function getCurrentWeekDay() {
   return Object.keys(daysOfTheWeek)[new Date().getDay()]
 }
-
-const hasLessonPlan = computed(() => {
-  return lessonTimetable[userWeekType.value].weeklyLessonPlan[currentWeekDay.value] || []
-});
-
-const targetDateByWeekday = computed(() => {
-if (!currentWeekDay.value) throw new Error("Weekday is not defined");
-
-const weekdayNumber = daysOfTheWeek[currentWeekDay.value].weekdayNumber;
-if (weekdayNumber === undefined) throw new Error("Unknown day of the week");
-
-const months = ["Январья", "Февралья", "Марта", "Апрелья", "Майя", "Июнья", "Июлья", "Августа", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
-
-const currentDate = new Date();
-
-if ( userWeekType.value !== weekType.value) {
-  currentDate.setDate(currentDate.getDate() + 7)
-}
-
-const daysToSubtract = currentDate.getDay() - weekdayNumber;
-currentDate.setDate(currentDate.getDate() - daysToSubtract);
-
-return `${currentDate.getDate()} ${months[currentDate.getMonth()]}`;
-})
 </script>
 
 <style scoped>
-.box{
+.box {
   display: block;
   width: 100px;
   height: 100px;
   background: #000;
 }
-.box-item{
+
+.box-item {
   width: 10px;
   height: 10px;
   margin-top: auto;
@@ -118,18 +140,19 @@ return `${currentDate.getDate()} ${months[currentDate.getMonth()]}`;
   background: red;
 }
 
-.header{
+.header {
   position: sticky;
   top: 0;
   background: white;
-  padding:5px 0;
+  padding: 5px 0;
 }
 
-.date-info{
+.date-info {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .time-section-list {
   display: grid;
 
@@ -139,22 +162,25 @@ return `${currentDate.getDate()} ${months[currentDate.getMonth()]}`;
 }
 </style>
 
-<style >
-.switch-selection-list{
+<style>
+.switch-selection-list {
   display: flex;
   list-style: none;
   gap: 10px;
 }
-.switch-selection-list__item{
+
+.switch-selection-list__item {
   cursor: pointer;
   padding: 2px 5px;
   border-radius: 5px;
 }
+
 .switch-active {
   color: white;
   background: #623df6;
 }
-.switch-outline{
+
+.switch-outline {
   border: solid 1px #623df6;
 }
 </style>

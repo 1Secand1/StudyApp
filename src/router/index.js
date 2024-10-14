@@ -8,6 +8,16 @@ const routes = [
     name: "DailyLessonList",
     component: DailyLessonList,
   },
+  {
+    path: "/userSettings",
+    name: "userSettings",
+    component: import('@/views/Presettings.vue'),
+  },
+  {
+    path: "/countdownTimer",
+    name: "countdownTimer",
+    component: import('@/views/countdownTimer.vue'),
+  },
 ];
 
 const router = createRouter({
